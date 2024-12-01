@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^=6-_k)oh!n9-fpcd1qd0rf(!8y2!!8cc*so1if(!*ydv@*_dc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://8000-idx-smart-payroll-1731019638764.','127.0.0.1',]
+ALLOWED_HOSTS = ['*','127.0.0.1/',]
 
 
 # Application definition

@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
-from mysite.ValueObjects import country, city
+from ValueObjects.models import country, city
 from django.utils.translation import gettext_lazy as _
 
 
@@ -32,7 +32,7 @@ class company(models.Model):
     soc_in_office = models.CharField(max_length=100, null=True)
     soc_in_no = models.IntegerField(null=True)
     website = models.URLField(max_length=200 ,null=True)
-    updated_at = models.DateTimeField(datetime.now()) #auto_now=True
+    created_at = models.DateTimeField(datetime.now(), auto_now=True)
 
     def __str__(self):
         Name= self.com_name

@@ -2,7 +2,7 @@ import uuid
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
-from ValueObjects.models import country, city
+from ValueObjects.models import country, city, business_type
 from django.utils.translation import gettext_lazy as _
 
 
@@ -26,12 +26,14 @@ class company(models.Model):
     city = models.ForeignKey(city, on_delete=models.CASCADE)
     phone = models.CharField(max_length=17, null=True)
     legal_form = models.CharField(max_length= 35, choices=OwnershipChoices, null=True)
-    owner_name = models.CharField(max_length=100, null=True)
-    tax_office = models.CharField(max_length=100, null=True)
+    business_type = models.ForeignKey(business_type, on_delete=models.CASCADE, null=True)
+    com_email = models.EmailField(max_length=254, null=True)
+    owner_name = models.CharField(max_length=250, null=True)
+    tax_office = models.CharField(max_length=150, null=True)
     tax_no = models.IntegerField(null=True)
-    soc_in_office = models.CharField(max_length=100, null=True)
+    soc_in_office = models.CharField(max_length=150, null=True)
     soc_in_no = models.IntegerField(null=True)
-    website = models.URLField(max_length=200 ,null=True)
+    website = models.URLField(max_length=350 ,null=True)
     created_at = models.DateTimeField(datetime.now(), auto_now=True)
 
     def __str__(self):

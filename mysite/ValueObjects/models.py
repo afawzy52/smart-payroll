@@ -41,5 +41,12 @@ class month(models.Model):
     month_name_ar = models.CharField(max_length=10)
     days_in_month = models.SmallIntegerField()
 
+class business_type(models.Model):
+    business_type_id = models.SmallIntegerField()   
+    business_type_name = models.CharField(max_length=150)
+    business_type_name_ar = models.CharField(max_length=150)
+
+    
+
 
 

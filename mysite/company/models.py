@@ -1,9 +1,15 @@
 import uuid
+from django.core.serializers import serialize
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 from ValueObjects.models import country, city, business_type
 from django.utils.translation import gettext_lazy as _
+from .choices import business_type_category
+
+
+
+
 
 
 # Create your models here.
@@ -26,7 +32,7 @@ class company(models.Model):
     city = models.ForeignKey(city, on_delete=models.CASCADE)
     phone = models.CharField(max_length=17, null=True)
     legal_form = models.CharField(max_length= 35, choices=OwnershipChoices, null=True)
-    business_type = models.ForeignKey(business_type, on_delete=models.CASCADE, null=True)
+    business_type = models.CharField(max_length= 150, choices= business_type_category, null=True)
     com_email = models.EmailField(max_length=254, null=True)
     owner_name = models.CharField(max_length=250, null=True)
     tax_office = models.CharField(max_length=150, null=True)

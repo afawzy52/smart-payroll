@@ -17,18 +17,22 @@
             <!-- /Page Header -->  
 <div calss="content" dir="rtl" style="text-align: right">
             
-<form >
+<form action="/company/" method="post"> 
+    {% csrf_token %}
+   
+  
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
                 <label>اسم الشركة <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" value="Dreamguy's Technologies">
+                
+                <input class="form-control" type="text" value="{{form.com_name.value}}" name="com_name" id="id_com_name">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
                 <label>المدير المسؤول</label>
-                <input class="form-control " value="Daniel Porter" type="text">
+                <input class="form-control " value="{{form.manager_incharge.value}}" type="text" id="id_manager_incharge">
             </div>
         </div>
     </div>
@@ -110,6 +114,7 @@
     <div class="submit-section">
         <button class="btn btn-primary submit-btn">Save</button>
     </div>
+   
 </form>
 </div>
 </div>

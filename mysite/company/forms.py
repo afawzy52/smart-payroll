@@ -7,12 +7,13 @@ from .models import company
 
 
 
-#user = User._meta.get_field("user_name").values()
+#user = User.objects.get(pk=1)
 
 class company_form(forms.ModelForm):
    class Meta:
      model = company
      exclude = ["com_id","com_slug","created_at"]
+    
     
      
 

@@ -17,7 +17,7 @@
             <!-- /Page Header -->  
 <div calss="content" dir="rtl" style="text-align: right">
             
-<form action="/company/" method="post"> 
+<form action="" method="post"> 
     {% csrf_token %}
    
   
@@ -32,7 +32,8 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label>المدير المسؤول</label>
-                <input class="form-control " value="{{form.manager_incharge.value}}" type="text" id="id_manager_incharge">
+                {{form.manager_incharge}}
+                <input class="form-control" type="text" value="{{form.manager_incharge.value}}" name="manager_incharge" id="id_manager_incharge">
             </div>
         </div>
     </div>
@@ -40,22 +41,30 @@
         <div class="col-sm-12">
             <div class="form-group">
                 <label>العنوان</label>
-                <input class="form-control " value="3864 Quiet Valley Lane, Sherman Oaks, CA, 91403" type="text">
+                <input class="form-control " value="{{form.com_address.values}}" type="text" id="id_com_address">
             </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 <label>الدولة</label>
-                <select class="form-control select">
-                    <option>USA</option>
-                    <option>United Kingdom</option>
+                {{form.country}}
+                <select class="form-control select"  name="country" id="id_country">
+                    {% for item in form.country %}
+                    <option>{{item}}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 <label>المدينة</label>
-                <input class="form-control" value="Sherman Oaks" type="text">
+                {{form.city}}
+                <select class="form-control select"  name="city" id="id_city">
+                    {% for item in form.city %}
+                    <option>{{item}}</option>
+                    {% endfor %}
+                </select>
+               
             </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">

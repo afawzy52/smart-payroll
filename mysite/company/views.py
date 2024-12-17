@@ -11,11 +11,11 @@ def comapny_update_view(request):
     if request.method == 'POST':
         form = company_form(request.POST, instance=com)
         if form.is_valid():
-            # update the existing `Band` in the database
+            # update the existing `company` in the database
             form.save()
             # redirect to the detail page of the `Band` we just updated
             messages.success(request, "Company details updated successfully.")
-            #return redirect('band-detail', band.id)
+            return redirect('company-update', com.id)
     else:
         form = company_form(instance=com)
 

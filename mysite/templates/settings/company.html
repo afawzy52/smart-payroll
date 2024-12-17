@@ -8,7 +8,7 @@
         
             <!-- Page Header -->
             <div class="page-header">
-                <div class="row" style="text-align: right">
+                <div class="row" style="text-align: right;">
                     <div class="col-sm-12">
                         <h3 class="page-title">بيانات الشركة</h3>
                     </div>
@@ -19,35 +19,75 @@
             
 <form action="" method="post"> 
     {% csrf_token %}
-   
+   {% for field in form %}
+       
+       {% endfor %}
   
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6"> 
             <div class="form-group">
                 <label>اسم الشركة <span class="text-danger">*</span></label>
                 
-                <input class="form-control" type="text" value="{{form.com_name.value}}" name="com_name" id="id_com_name">
+                <input class="form-control form-control-md" type="text" value="{{form.com_name.value}}" name="com_name" id="id_com_name">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>اسم الشركة المختصر</label>
+                <input class="form-control" type="text" value="{{form.com_short_name.value}}" name="com_short_name" id="id_com_short_name">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label> اسم المالك <span class="text-danger">*</span></label>
+                
+                <input class="form-control" type="text" value="{{form.owner_name.value}}" name="owner_name" id="id_owner_name">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
                 <label>المدير المسؤول</label>
-                {{form.manager_incharge}}
                 <input class="form-control" type="text" value="{{form.manager_incharge.value}}" name="manager_incharge" id="id_manager_incharge">
             </div>
         </div>
     </div>
     <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label> الشكل القانونى<span class="text-danger">*</span></label>
+                <select class="form-control select"  name="legal_form" id="id_legal_form">
+                    {% for item in form.legal_form %}
+                    <option>{{item}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>نوع الأعمال<span class="text-danger">*</span></label>
+                <select class="form-control select"  name="business_type" id="id_business_type">
+                    {% for item in form.business_type %}
+                    <option>{{item}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
-                <label>العنوان</label>
-                <input class="form-control " value="{{form.com_address.values}}" type="text" id="id_com_address">
+                <label>العنوان</label> 
+                <input class="form-control " value="{{form.com_address.value}}" type="text" id="id_com_address">
             </div>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 <label>الدولة</label>
-                {{form.country}}
                 <select class="form-control select"  name="country" id="id_country">
                     {% for item in form.country %}
                     <option>{{item}}</option>
@@ -58,7 +98,6 @@
         <div class="col-sm-6 col-md-6 col-lg-3">
             <div class="form-group">
                 <label>المدينة</label>
-                {{form.city}}
                 <select class="form-control select"  name="city" id="id_city">
                     {% for item in form.city %}
                     <option>{{item}}</option>
@@ -67,61 +106,59 @@
                
             </div>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-3">
+       
+    <div class="row">
+        <div class="col-sm-6">
             <div class="form-group">
-                <label>الحى</label>
-                <select class="form-control select">
-                    <option>California</option>
-                    <option>Alaska</option>
-                    <option>Alabama</option>
-                </select>
+                <label>رقم التامينات الاجتماعية</label>
+                <input class="form-control" value="{{form.soc_in_no.value}}" type="number" name="soc_in_no" id="id_soc_in_no">
             </div>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-3">
+        <div class="col-sm-6">
             <div class="form-group">
-                <label>الرمز البريدى</label>
-                <input class="form-control" value="91403" type="text">
+                <label>مكتب التامينات الاجتماعية</label>
+                <input class="form-control" value="{{form.soc_in_office.value}}" type="text" name="tax_office" id="id_soc_in_office">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label>Email</label>
-                <input class="form-control" value="danielporter@example.com" type="email">
+                <label>الرقم الضريبى</label>
+                <input class="form-control" value="{{form.tax_no.value}}" type="number" name="tax_no" id="id_tax_no">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label>Phone Number</label>
-                <input class="form-control" value="818-978-7102" type="text">
+                <label>مكتب ضرائب</label>
+                <input class="form-control" value="{{form.tax_office.value}}" type="text" name="tax_office" id="id_tax_office">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                <label>Mobile Number</label>
-                <input class="form-control" value="818-635-5579" type="text">
+                <label>البريد الاللكترونى</label>
+                <input class="form-control" value="{{form.com_email.value}}" type="com_email" name="email" id="id_com_email">
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
-                <label>Fax</label>
-                <input class="form-control" value="818-978-7102" type="text">
+                <label>التليفون</label>
+                <input class="form-control" value="{{form.phone.value}}" type="tel" name="phone" id="id_phone">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
             <div class="form-group">
-                <label>Website Url</label>
-                <input class="form-control" value="https://www.example.com" type="text">
+                <label>الموقع الاللكترونى</label>
+                <input class="form-control" value="{{form.website.value}}" type="text">
             </div>
         </div>
     </div>
     <div class="submit-section">
-        <button class="btn btn-primary submit-btn">Save</button>
+        <button class="btn btn-primary submit-btn" value="submit" type="submit">Save</button>
     </div>
    
 </form>

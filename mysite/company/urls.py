@@ -19,7 +19,16 @@ from . import views
 
 
 urlpatterns = [
-    path('settings/company/', views.comapny_update_view, name='company-update'),
+    #--------company urls
+    path('settings/blank/',views.blank_view, name='blank'),
+    path('settings/company/', views.comapny_update_view, name='company'),
     
-
+    #--------branch urls
+    path('settings/branch/', views.branch_list_view, name='branch-list'),
+    path('settings/branch/add/', views.branch_add_view, name='branch_add'),
+    
+    # path('branch/<int:pk>/edit/', views.AuthorUpdate.as_view(), name='author-update'),
+    path('settings/branch/<int:pk>/delete/', views.branch_delete_view, name='branch_delete'),
+    #---------department urls
+    path('settings/dept/', views.dept_list_view, name='dept-list'),
 ]

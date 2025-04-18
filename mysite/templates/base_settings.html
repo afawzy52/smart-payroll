@@ -29,21 +29,21 @@
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		[if lt IE 9]
+		<!--[if lt IE 9] >
 			<script src="{% static 'assets/js/html5shiv.min.js' %}"></script>
 			<script src="{% static 'assets/js/respond.min.js' %}"></script>
-		[endif]
+		<!/[endif]-->
     </head>
     <body>
 		<!-- Main Wrapper -->
-        <div class="main-wrapper">
+    <div class="main-wrapper">
 		
 			<!-- Header -->
             <div class="header">
 			
 				<!-- Logo -->
                 <div class="header-left">
-                    <a href="index.html" class="logo">
+                    <a href={% url 'index' %} class="logo">
 						<img src="{% static 'assets/img/logo.png' %}" width="40" height="40" alt="">
 					</a>
                 </div>
@@ -337,11 +337,11 @@
 					<div class="sidebar-menu">
 						<ul>
 							<li> 
-								<a href="index.html"><i class="la la-home"></i> <span>Back to Home</span></a>
+								<a href={% url 'index' %}><i class="la la-home"></i> <span>Back to Home</span></a>
 							</li>
 							<li class="menu-title">Settings</li>
 							<li> 
-								<a href="settings.html"><i class="la la-building"></i> <span>Company Settings</span></a>
+								<a href={% url 'company' %} ><i class="la la-building"></i> <span>Company Settings</span></a>
 							</li>
 							<li> 
 								<a href="localization.html"><i class="la la-clock-o"></i> <span>Localization</span></a>
@@ -376,16 +376,19 @@
             </div>
 			<!-- Sidebar -->
               <!-- Page Wrapper -->
-            <div class="page-wrapper">
+    <div class="page-wrapper">
             <!-- Page Content -->
                          {% block content%}
                      
-                        {% endblock %}      
+                        {% endblock %}
+			
             <!-- /Page Content -->  
     </div>
     <!-- /Page Wrapper -->
 </div>
 <!-- /Main Wrapper -->
+
+<script src="https://unpkg.com/htmx.org@2.0.4"></script>
 <!-- jQuery -->
 <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
 
@@ -399,8 +402,15 @@
 <!-- Select2 JS -->
 <script src="{% static 'assets/js/select2.min.js' %}"></script>
 
+<!-- Datatable JS -->
+<script src="{% static 'assets/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'assets/js/dataTables.bootstrap4.min.js' %}"></script>
+
 <!-- Custom JS -->
 <script src="{% static 'assets/js/app.js' %}"></script>
+<!-- HTMX -->
+<!--  
+
 
 </body>
 </html>

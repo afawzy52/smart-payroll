@@ -51,3 +51,37 @@ class company(models.Model):
 
     def __unicode__(self):
         return unicode(self.user)
+
+
+class branch(models.Model):
+
+    branch_id = models.AutoField(primary_key=True, unique=True)
+    company = models.ForeignKey(company,on_delete=models.CASCADE)
+    branch_name = models.CharField(max_length=150)
+    branch_location = models.CharField(max_length=250)
+    city = models.ForeignKey(city,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.branch_name
+
+
+
+class dept(models.Model):
+
+    dept_id = models.AutoField(primary_key=True, unique=True,db_index=True)
+    dept_name = models.CharField (max_length=200)
+    branch = models.ForeignKey(branch,on_delete=models.CASCADE )
+    
+
+    def __str__(self):
+        return self.dept_name                       
+
+
+class job_title(models.Model):
+
+    job_id = models.AutoField(primary_key= True)
+    dept = models.ForeignKey(dept,on_delete=models.CASCADE)
+    job_title = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.job_title

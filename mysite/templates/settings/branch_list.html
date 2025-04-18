@@ -1,0 +1,129 @@
+{% extends "base_settings.html" %}
+
+{% block title %}Settings - Branch {% endblock %}
+
+{% block content%}
+			<!-- Page Wrapper <div class="page-wrapper"> -->
+
+			
+
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">Branch</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href={% url 'index' %}>Dashboard</a></li>
+									<li class="breadcrumb-item active">Branch</li>
+								</ul>
+							</div>
+							<div class="col-auto float-right ml-auto">
+								<button type="button" class="btn add-btn" data-toggle="modal" hx-get="{% url 'branch_add' %}"   hx-target="#dialog" hx-trigger="click"><i class="fa fa-plus"></i> Add Branch</a> </button>
+								<a class="btn add-btn" href="" data-toggle="modal" data-target="#add_department"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-md-12">
+							<div>
+								<table class="table table-striped custom-table mb-0 datatable">
+									<thead >
+										<tr>
+											<th style="width: 30px; font-weight: bold;">#</th>
+											<th style="font-weight: bold">اسم الفرع</th>
+											<th style="font-weight: bold">الموقع</th>
+											<th style="font-weight: bold">المدينة</th>
+											<th style="font-weight: bold">المدينة</th>
+											<th class="text-right" style="font-weight: bold">خصائص</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for item in branch %}
+										{% include 'settings/branch_list_partial.html' %}
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+	<!-- Add Department Modal -->
+	
+	<div id="add_task" class="modal modal-blur fade" tabindex="-1" role="dialog">
+		<div id="dialog" class="modal-dialog modal-dialog-centered" hx-target="this">
+			<div class="modal-content" id="content">
+				
+				
+			</div>
+		</div>
+	</div>
+								
+	<!-- /Add Department Modal -->
+
+	<div id="add_department" class="modal custom-modal fade" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			
+					{% include 'settings/branch_add.html' %}
+			
+		</div>
+	</div>
+
+
+	<!-- Edit Department Modal -->
+				<div id="edit_department" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Edit Department</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								
+								{% include 'settings/branch_edit.html' %}
+		
+								
+							</div>
+						</div>
+					</div>
+				</div>
+	<!-- /Edit Department Modal -->
+
+	<!-- Delete Department Modal -->
+				<div class="modal custom-modal fade" id="delete_department" role="dialog">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-body">
+								
+								{% include 'settings/branch_delete.html' %} <p> hello</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+	<!-- /Delete Department Modal -->
+
+
+     </div>
+	<!-- /Page Content -->
+
+
+<!-- /Page Wrapper -->
+{% endblock %}
+{% load static %}
+<script src="{% static 'assets/js/htmx.js' %}"></script>
+
+<script src="{% static 'assets/js/modal.js' %}"></script>
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+{% extends "base_settings.html" %}
+{% block title %}Settings - Company {% endblock %}
+
+{% block content%}
+
+<div class="col-auto float-right ml-auto">
+    <button type="button" class="btn add-btn" data-toggle="modal" hx-get="{% url 'branch_add' %}"   hx-target="#dialog" hx-trigger="click"><i class="fa fa-plus"></i> Add Branch</a> </button>
+    <button  hx-get="{% url 'branch_add' %}" hx-target="main" hx-swap="">add</button>
+<!-- Blade Template -->
+<div>
+    <button wire:click="increment">Increment</button>
+    <h1>{{ count }}</h1>
+</div>
+
+
+{% endblock %}
+

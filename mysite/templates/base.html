@@ -29,10 +29,10 @@
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		[if lt IE 9]
+		<!--[if lt IE 9]>
 			<script src="{% static 'assets/js/html5shiv.min.js' %}"></script>
 			<script src="{% static 'assets/js/respond.min.js' %}"></script>
-		[endif]
+		<!/[endif]-->
     </head>
     <body>
 		<!-- Main Wrapper -->
@@ -43,7 +43,7 @@
 			
 				<!-- Logo -->
                 <div class="header-left">
-                    <a href="index.html" class="logo">
+                    <a href="index" class="logo">
 						<img src="{% static 'assets/img/logo.png' %}" width="40" height="40" alt="">
 					</a>
                 </div>
@@ -308,7 +308,7 @@
 						</a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="profile.html">My Profile</a>
-							<a class="dropdown-item" href="settings.html">Settings</a>
+							<a class="dropdown-item" href={% url 'company' %}>Settings</a>
 							<a class="dropdown-item" href="login.html">Logout</a>
 						</div>
 					</li>
@@ -484,7 +484,7 @@
 								<a href="users.html"><i class="la la-user-plus"></i> <span>Users</span></a>
 							</li>
 							<li> 
-								<a href="settings.html"><i class="la la-cog"></i> <span>Settings</span></a>
+								<a href={% url 'company' %}><i class="la la-cog"></i> <span>Settings</span></a>
 							</li>
 							<li class="menu-title"> 
 								<span>Pages</span>
